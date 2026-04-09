@@ -11,18 +11,26 @@ export default function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1 className="app-title">天気カレンダー</h1>
+        <div className="app-brand">
+          <span className="app-brand-icon">🌤</span>
+          <h1 className="app-title">天気カレンダー</h1>
+        </div>
         <LocationInput onSearch={load} loading={loading} />
         {location && (
           <p className="location-label">
-            {location.name}
-            {location.admin1 ? `, ${location.admin1}` : ''}, {location.country}
+            <span className="location-pin">📍</span>
+            {location.name}{location.admin1 ? `, ${location.admin1}` : ''}, {location.country}
           </p>
         )}
         {error && <p className="error-msg">{error}</p>}
       </header>
 
       <main className="app-main">
+        {loading && (
+          <div className="loading-bar">
+            <div className="loading-bar-inner" />
+          </div>
+        )}
         <Calendar
           weatherData={data}
           events={events}

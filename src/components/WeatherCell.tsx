@@ -30,14 +30,16 @@ interface Props {
 
 export function WeatherCell({ day }: Props) {
   return (
-    <div className="weather-cell" title={`${LABELS[day.weather]} / 降水: ${day.rain}mm`}>
+    <div
+      className={`weather-cell weather-${day.weather}`}
+      title={`${LABELS[day.weather]}  ${day.temp_max}° / ${day.temp_min}°${day.rain > 0 ? `  降水 ${day.rain}mm` : ''}`}
+    >
       <span className="weather-icon">{ICONS[day.weather]}</span>
-      <span className="weather-temps">
+      <div className="weather-temps">
         <span className="temp-max">{day.temp_max}°</span>
-        <span className="temp-sep">/</span>
         <span className="temp-min">{day.temp_min}°</span>
-      </span>
-      {day.rain > 0 && <span className="rain-amount">{day.rain}mm</span>}
+      </div>
+      {day.rain > 0 && <span className="rain-badge">💧{day.rain}</span>}
     </div>
   );
 }
