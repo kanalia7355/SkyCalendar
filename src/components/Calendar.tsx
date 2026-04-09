@@ -72,7 +72,7 @@ export function Calendar({ weatherData, events, onAddEvent, onUpdateEvent, onDel
     }
     const ev = arg.event.extendedProps.event as CalendarEvent;
     return (
-      <div className="user-event-content">
+      <div className="user-event-content" style={{ background: ev.color }}>
         {ev.startTime && <span className="user-event-time">{ev.startTime}</span>}
         <span className="user-event-title">{ev.title}</span>
       </div>
