@@ -21,12 +21,7 @@ export default function App() {
       </header>
 
       <main className="app-main">
-        {data.length === 0 && !loading && (
-          <div className="empty-state">
-            <p>都市名を入力して直近1週間の天気を表示します</p>
-          </div>
-        )}
-        {data.length > 0 && <Calendar weatherData={data} />}
+        <Calendar weatherData={data} />
       </main>
     </div>
   );
