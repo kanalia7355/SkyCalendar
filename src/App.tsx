@@ -1,10 +1,12 @@
 import { useWeather } from './hooks/useWeather';
+import { useEvents } from './hooks/useEvents';
 import { LocationInput } from './components/LocationInput';
 import { Calendar } from './components/Calendar';
 import './index.css';
 
 export default function App() {
   const { data, location, loading, error, load } = useWeather();
+  const { events, addEvent, updateEvent, deleteEvent } = useEvents();
 
   return (
     <div className="app">
@@ -21,7 +23,13 @@ export default function App() {
       </header>
 
       <main className="app-main">
-        <Calendar weatherData={data} />
+        <Calendar
+          weatherData={data}
+          events={events}
+          onAddEvent={addEvent}
+          onUpdateEvent={updateEvent}
+          onDeleteEvent={deleteEvent}
+        />
       </main>
     </div>
   );

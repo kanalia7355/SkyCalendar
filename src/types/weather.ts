@@ -28,3 +28,13 @@ export interface GeoResult {
   country: string;
   admin1?: string;
 }
+
+export interface CalendarEvent {
+  id: string;
+  title: string;
+  date: string;       // YYYY-MM-DD
+  startTime?: string; // HH:MM
+  endTime?: string;   // HH:MM
+  notes?: string;
+  color: string;
+}
